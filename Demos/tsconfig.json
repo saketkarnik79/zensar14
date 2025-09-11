@@ -3,15 +3,21 @@
   "compilerOptions": {
     // File Layout
     // "rootDir": "./src",
+    "esModuleInterop":true,
+    "allowSyntheticDefaultImports": true,
+    "allowJs": true,
+    "checkJs": true,
+    "forceConsistentCasingInFileNames": true,
     "outDir": "./dist",
 
     // Environment Settings
     // See also https://aka.ms/tsconfig/module
     "module": "commonjs",
-    "target": "esnext",
+    "target": "es2022",
     "types": [],
+    "noImplicitAny": true,
     // For nodejs:
-    // "lib": ["esnext"],
+    "lib": ["es2022","dom"],
     // "types": ["node"],
     // and npm install -D @types/node
 
@@ -39,9 +45,6 @@
     "isolatedModules": true,
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "include": ["./Demos/**/*.ts"],
-    "exclude": ["node_modules", "**/*.spec.ts"]
+    "skipLibCheck": true
   }
 }
