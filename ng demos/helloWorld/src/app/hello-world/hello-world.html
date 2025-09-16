@@ -1,0 +1,40 @@
+<p>hello-world works!</p>
+
+<!-- <div style="color: blue;">
+    <p>Hello, {{firstName}} {{lastName}}</p>
+</div> -->
+<!-- <div [className]="'blue'">
+    <p>Hello, {{firstName}} {{lastName}}</p>
+</div> -->
+<!-- <div [className]="classB">
+    <p>Hello, {{firstName}} {{lastName}}</p>
+</div> -->
+
+<div [ngClass]="classB">
+    <p>Hello, {{firstName}} {{lastName}}</p>
+</div>
+
+<div>&nbsp;</div>
+<!-- <div style="color: green;">
+    <p>Person Data:</p>
+    <p>First Name: {{person.firstName}}</p>
+    <p>Last Name: {{person.lastName}}</p>
+    <p>Age: {{person.age}}</p>
+</div> -->
+<!-- <div [className]="'green'">
+    <p>Person Data:</p>
+    <p>First Name: {{person.firstName}}</p>
+    <p>Last Name: {{person.lastName}}</p>
+    <p>Age: {{person.age}}</p>
+</div> -->
+
+<div [className]="classG">
+    <p>Person Data:</p>
+    <p>First Name: {{person.firstName}}</p>
+    <p>Last Name: {{person.lastName}}</p>
+    <p>Age: {{person.age}}</p>
+</div>
+
+<h1 [innerText]="title"></h1>
+<h2>Example 1</h2>
+<button [disabled]="isDisabled">Click Me!</button>
