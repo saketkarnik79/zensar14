@@ -1,4 +1,25 @@
 <h1>
   Hello Angular!
 </h1>
+<hr/>
+<button (click)="getAllProducts()">Get All Products</button>
+<table *ngIf="products">
+  <thead>
+    <tr>
+      <th>Product ID</th>
+      <th>Name</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products">
+      <td>{{ product.productId }}</td>
+      <td>{{ product.name }}</td>
+      <td>{{ product.price | currency }}</td>
+    </tr>
+  </tbody>
+</table>
+<hr/>
+<app-parent-comp></app-parent-comp>
+<hr/>
 <app-hello-world></app-hello-world>

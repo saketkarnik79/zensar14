@@ -1,0 +1,4 @@
+<p>parent-comp works!</p>
+<input type="text" [(ngModel)]="name" placeholder="Enter name"/>
+
+<app-parent-comp-child-comp [name]="name" (nameChange)="nameChangeHandler($event)"></app-parent-comp-child-comp>
