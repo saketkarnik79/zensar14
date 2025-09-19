@@ -1,0 +1,73 @@
+<div class="container">
+    <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    
+        <div class = "row">
+
+            <table class="table">
+
+                <tbody>
+
+                    <tr>
+                        <th>Product Id</th>
+                        <td>
+                            <input type="number" class="form-control" readonly="readonly"
+                                formControlName="productId" placeholder="Product Id">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Product Name</th>
+                        <td>
+                            <input type="text" class="form-control" formControlName="name" placeholder="Product Name">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Description</th>
+                        <td>
+                            <textarea class="form-control" formControlName="description"
+                                 placeholder="Product Description"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Price</th>
+                        <td>
+                            <input type="number" class="form-control" formControlName="price" placeholder="Product Price">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <button type="submit" class="btn btn-primary">{{ eventValue }}</button>
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+
+        </div>
+    
+    </form>
+
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Product Id</th>
+                    <th>Product Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of products$ | async">
+                    <td>{{ product.productId }}</td>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.description }}</td>
+                    <td>{{ product.price }}</td>
+                    <td>
+                        <button class="btn btn-warning" (click)="editProduct(product)">Edit</button>
+                        <button class="btn btn-danger" (click)="deleteProduct(product.productId)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</div>

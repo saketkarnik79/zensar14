@@ -1,0 +1,45 @@
+<form [formGroup]="contactForm" (ngSubmit)="onSubmit()" novalidate>
+  <div>
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" name="firstName" formControlName="firstName" />
+    <div class="text-danger"
+         *ngIf="!contactForm.controls.firstName?.valid && (contactForm.controls.firstName?.dirty ||contactForm.controls.firstName?.touched)">
+    <div [hidden]="!contactForm.controls.firstName.errors?.['required']" >
+      First Name is required
+    </div>
+    <div [hidden]="!contactForm.controls.firstName.errors?.['minlength']">
+      Min Length is 2
+    </div>
+  </div>
+  </div>
+  <div>
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" name="lastName" formControlName="lastName" />
+  </div>
+  <div>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" formControlName="email" />
+  </div>
+  <div>
+    <label for="gender">Gender:</label>
+    <input type="radio" value="male" id="gender" name="gender" formControlName="gender" />Male
+    <input type="radio" value="female" id="gender" name="gender" formControlName="gender" />Female
+  </div>
+  <div>
+    <label for="isMarried">Married?:</label>
+    <input type="checkbox" id="isMarried" name="isMarried" formControlName="isMarried" />
+  </div>
+  <div>
+    <label for="country">Country:</label>
+    <select id="country" name="country" formControlName="country">
+      <option value="1">India</option>
+      <option value="2">USA</option>
+      <option value="3">UK</option>
+      <option value="4">Canada</option>
+      <option value="5">Australia</option>
+    </select>
+  </div>
+  <div>
+    <button type="submit">Submit</button>
+  </div>
+</form>

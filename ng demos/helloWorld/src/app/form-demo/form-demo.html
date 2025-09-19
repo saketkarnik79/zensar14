@@ -1,0 +1,39 @@
+<!-- First Name: <input type="text" name="firstName" placeholder="First Name"/>
+City: <input type="text" name="city" placeholder="City"/>
+Street: <input type="text" name="street" placeholder="Street"/>
+Pin Code: <input type="text" name="pinCode" placeholder="Pine Code"/> -->
+
+<form #contactForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+  <div>
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" name="firstName" [(ngModel)]="contact.firstName" required minlength="2" 
+      placeholder="First Name" #firstName="ngModel" />
+    <div *ngIf="firstName.errors?.['required']" class="text-danger">
+      First Name is missing
+    </div>
+    <div *ngIf="firstName.errors?.['minlength']" class="text-danger">
+      First Name must have at least 2 characters.
+    </div>
+  </div>
+  <div>
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" name="lastName" [(ngModel)]="contact.lastName" required maxlength="15" 
+      pattern="^[a-zA-Z]+$" placeholder="Last Name"/>
+  </div>
+  <div>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" [(ngModel)]="contact.email" required email placeholder="Email"/>
+  </div>
+  <div>
+    <label for="gender">Gender:</label>
+    <input type="radio" id="gender" name="gender" value="Male" [(ngModel)]="contact.gender" />Male
+    <input type="radio" id="gender" name="gender" value="Female" [(ngModel)]="contact.gender" />Female
+  </div>
+  <div>
+    <label for="isToc">Accept TOC:</label>
+    <input type="checkbox" id="isToc" name="isToc" [(ngModel)]="contact.isToc" />
+  </div>
+  <div>
+    <button type="submit" [disabled]="!contactForm.valid">Submit</button>
+  </div>
+</form>
