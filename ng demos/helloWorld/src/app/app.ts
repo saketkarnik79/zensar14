@@ -8,10 +8,14 @@ import { FormDemo } from './form-demo/form-demo';
 import { ReactiveFormDemo } from "./reactive-form-demo/reactive-form-demo";
 import { DemoFormArray } from "./demo-form-array/demo-form-array";
 import { ProductComp } from './product-comp/product-comp';
+import { Comp1 } from './comp1/comp1';
+import { Comp2 } from './comp2/comp2';
+import { Comp3 } from './comp3/comp3';
+import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [HelloWorld, ParentComp, CurrencyPipe, CommonModule, FormDemo, ReactiveFormDemo, DemoFormArray, ProductComp],
+  imports: [RouterOutlet, Comp1, Comp2, Comp3, HelloWorld, ParentComp, CurrencyPipe, CommonModule, FormDemo, ReactiveFormDemo, DemoFormArray, ProductComp, RouterLink, RouterLinkActive],
   templateUrl: './app.html',
   styleUrl: './app.css',
   providers: [
@@ -19,7 +23,7 @@ import { ProductComp } from './product-comp/product-comp';
   ]
 })
 export class App {
-  protected readonly title = signal('helloWorld');
+  protected readonly title = "Hello World";
 
   products: Product[]|undefined;
   productService: ProductService;

@@ -1,15 +1,46 @@
-<h1>
+<div class="container">
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+     
+      <a class="navbar-brand" [routerLink]="['/']">
+        <strong>
+          {{title}}
+        </strong>
+      </a>
+  
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/comp1']" [routerLinkActive]="['active']">Component 1</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/comp2']" 
+              [queryParams]="{color: 'blue', sort: 'name'}" [routerLinkActive]="['active']">Component 2</a>  
+                <!-- Route with Query Parameters: /comp2?color=blue&sort=name -->
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/comp3', '2']" [routerLinkActive]="['active']" >Component 3</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <router-outlet></router-outlet>
+</div>
+
+<!-- <h1>
   Hello Angular!
 </h1>
-<hr/>
+<hr/> -->
+
 <!-- <app-form-demo></app-form-demo> -->
 <!-- <hr/> -->
   <!-- <app-reactive-form-demo></app-reactive-form-demo>
   <hr/> -->
 <!-- <app-demo-form-array></app-demo-form-array>
 <hr/> -->
-<app-product-comp></app-product-comp>
-<hr/>
+<!-- <app-product-comp></app-product-comp>
+<hr/> -->
   <!-- <button (click)="getAllProducts()">Get All Products</button>
 <table *ngIf="products">
   <thead>
