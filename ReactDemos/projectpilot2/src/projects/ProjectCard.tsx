@@ -12,20 +12,21 @@ function formatDescription(description: string): string{
 interface ProjectCardProps{
     project: Project;
     onEdit: (project: Project)=> void;
-    onDelete: (id: number | undefined) => void;
+    //onDelete: (id: number | undefined) => void;
 }
 
 //function ProjectCard({project}: ProjectCardProps){
-function ProjectCard({project, onEdit, onDelete}: ProjectCardProps){
+//function ProjectCard({project, onEdit, onDelete}: ProjectCardProps){
+function ProjectCard({project, onEdit}: ProjectCardProps){
     
     const handleEditClick = (projectBeingEdited: Project) => {
         //console.log(projectBeingEdited);
         onEdit(projectBeingEdited);
     };
 
-    const handleDeleteClick = (id: number | undefined) =>{
-        onDelete(id);
-    };
+    // const handleDeleteClick = (id: number | undefined) =>{
+    //     onDelete(id);
+    // };
 
     return(
         <>
@@ -45,10 +46,10 @@ function ProjectCard({project, onEdit, onDelete}: ProjectCardProps){
                         Edit
                     </button>
                     <span></span>
-                    <button className=" bordered primary" onClick={() => handleDeleteClick(project.id)}>
+                    {/* <button className=" bordered primary" onClick={() => handleDeleteClick(project.id)}>
                         <i className="fa fa-trash"></i>
                         Delete
-                    </button>
+                    </button> */}
                 </section>
             </div>
         </>

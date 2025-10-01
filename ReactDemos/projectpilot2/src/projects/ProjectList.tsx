@@ -9,12 +9,13 @@ import { useState } from "react";
 
 interface ProjectListProps{
     projects: Project[];
-    onSave: (project: Project) => void;
-    onDelete: (id: number | undefined) => void;
+    //onSave: (project: Project) => void;
+    //onDelete: (id: number | undefined) => void;
 }
 
 //function ProjectList({projects}: ProjectListProps){
-function ProjectList({projects, onSave, onDelete}: ProjectListProps){
+//function ProjectList({projects, onSave, onDelete}: ProjectListProps){
+function ProjectList({projects}: ProjectListProps){
 
     const [projectBeingEdited, setProjectBeingEdited] = useState({});
 
@@ -61,9 +62,11 @@ function ProjectList({projects, onSave, onDelete}: ProjectListProps){
 
                             {
                                 project === projectBeingEdited ? (
-                                    <ProjectForm project={project} onCancel={cancelEditing} onSave={onSave}/>
+                                    // <ProjectForm project={project} onCancel={cancelEditing} onSave={onSave}/>
+                                    <ProjectForm project={project} onCancel={cancelEditing} />
                                 ) : (
-                                    <ProjectCard project={project} onEdit={handleEdit} onDelete={onDelete}/>
+                                    // <ProjectCard project={project} onEdit={handleEdit} onDelete={onDelete}/>
+                                    <ProjectCard project={project} onEdit={handleEdit} />
                                 )
                             }
                         </div>
