@@ -1,0 +1,10 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+	<WarningsAsErrors>CS3002;CS3003;CS3005;</WarningsAsErrors>
+  </PropertyGroup>
+
+</Project>

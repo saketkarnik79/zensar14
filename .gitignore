@@ -1,0 +1,22 @@
+# Ignore Visual Studio temporary files and folders
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Ignore build output
+bin/
+obj/
+
+# Ignore other common temporary files
+*.log
+*.tmp
+*.cache
+
+# Ignore FileContentIndex and other hidden folders
+**/.vs/
+**/.vs/**
+
+# Ignore specific file types that shouldn't be tracked
+*.vsidx
