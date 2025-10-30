@@ -1,6 +1,7 @@
 ﻿using CS_DemoOOP.Demographics;
 using CS_DemoOOP.Arithmetic;
 using static CS_DemoOOP.Arithmetic.Calc;
+using CS_DemoOOP.Banking;
 
 namespace CS_DemoOOP
 {
@@ -37,8 +38,34 @@ namespace CS_DemoOOP
             //Console.WriteLine(Divide(20, 3));
             //Console.WriteLine(Modulus(20, 3));
 
-            Employee emp1 = new Employee(101, "James", DateOnly.Parse("10-Sep-1999"), 10, 1007, 100000);
-            Console.WriteLine(emp1.GetData());
+            //Employee emp1 = new Employee(101, "James", DateOnly.Parse("10-Sep-1999"), 10, 1007, 100000);
+            //Console.WriteLine(emp1.GetData());
+
+            SavingsAccount acc = new SavingsAccount(1000);
+            acc.LowBalance += (currentBalance) =>
+            {
+                Console.WriteLine($"Alert: Low balance in savings account. Current balance: {currentBalance}");
+            };
+            try
+            {
+                Console.WriteLine(acc.Balance);
+                acc.Deposit(9000);
+                Console.WriteLine(acc.Balance);
+                var premium = (acc as SavingsAccount).CalculatePremium();
+                acc.Withdraw(premium);
+                acc.Withdraw(5500);
+                Console.WriteLine(acc.Balance);
+                acc.Withdraw(5000);
+                Console.WriteLine(acc.Balance);
+            }
+            catch (InvalidOperationException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            catch (Exception ex) 
+            {
+                Console.WriteLine(ex.Message);
+            }
 
             Console.WriteLine("Program completed. Press any key to exit...");
             Console.ReadKey();

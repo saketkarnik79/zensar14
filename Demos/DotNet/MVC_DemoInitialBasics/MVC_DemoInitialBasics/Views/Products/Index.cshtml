@@ -1,0 +1,79 @@
+﻿@model Product
+
+@{
+    ViewData["Title"] = "Product Details";
+}
+
+<h1>@ViewData["Title"]</h1>
+@*<div>
+        <h2>@Model.Name</h2>
+        <p>@Model.Id</p>
+        <p>Price: @Model.Price.ToString("C")</p>
+        <p>Description: @Model.Description</p>
+    </div>*@
+
+@*<div>
+        <h2>
+            @Html.DisplayNameFor(m => m.Name): @Html.DisplayFor(m => m.Name)
+        </h2>
+        <p>
+            @Html.DisplayNameFor(m => m.Id): @Html.DisplayFor(m => m.Id)
+        </p>
+        <p>
+            @Html.DisplayNameFor(m => m.Price): @Html.DisplayFor(m => m.Price)
+        </p>
+        <p>
+            @Html.DisplayNameFor(m => m.Description): @Html.DisplayFor(m => m.Description)
+        </p>
+    </div>*@
+
+<div>
+    @*@using (Html.BeginForm())
+        {*@
+    <form method="post" asp-controller="Products" asp-action="Index">
+        <div>
+            <h2>
+                @*@Html.DisplayNameFor(m => m.Name): @Html.TextBoxFor(m => m.Name)*@
+                @*@Html.DisplayNameFor(m => m.Name): @Html.EditorFor(m => m.Name)*@
+                <label asp-for="Name"></label>
+                <input asp-for="Name" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </h2>
+            <p>
+                @*@Html.DisplayNameFor(m => m.Id): @Html.TextBoxFor(m => m.Id)*@
+                @* @Html.DisplayNameFor(m => m.Id): @Html.EditorFor(m => m.Id)*@
+                <label asp-for="Id"></label>
+                <input asp-for="Id" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+
+            </p>
+            <p>
+                @*@Html.DisplayNameFor(m => m.Price): @Html.TextBoxFor(m => m.Price)*@
+                @*@Html.DisplayNameFor(m => m.Price): @Html.EditorFor(m => m.Price)*@
+                <label asp-for="Price"></label>
+                <input asp-for="Price" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+
+            </p>
+            <p>
+                @*@Html.DisplayNameFor(m => m.Description): @Html.TextAreaFor(m => m.Description)*@
+                @*@Html.DisplayNameFor(m => m.Description): @Html.EditorFor(m => m.Description)*@
+                <label asp-for="Description"></label>
+                <textarea asp-for="Description"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+
+            </p>
+            <p>
+                <button type="submit">Submit</button>
+            </p>
+            <div asp-validation-summary="ModelOnly" class="text-danger">
+
+            </div>
+        </div>
+    </form>
+    @*  *@
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,18 @@
+﻿@page
+@model Web_DemoASPNETCoreBasics2.Pages.MyPageModel
+@{
+}
+
+<h1 style="color:lime;">
+    This is my page.
+</h1>
+<p style="font-size:16px; color:orangered;">
+    @ViewData["Data"]
+</p>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script type="text/javascript">
+        console.log("MyPage script loaded.");
+    </script>
+}
