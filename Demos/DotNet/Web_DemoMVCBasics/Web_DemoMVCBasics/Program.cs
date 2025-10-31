@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using Web_DemoMVCBasics.Data;
+
 namespace Web_DemoMVCBasics
 {
     public class Program
@@ -7,6 +10,10 @@ namespace Web_DemoMVCBasics
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+            builder.Services.AddDbContext<ZenInventoryDbContext>(options =>
+            {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("cs"));
+            });
             builder.Services.AddControllersWithViews();
 
             var app = builder.Build();
