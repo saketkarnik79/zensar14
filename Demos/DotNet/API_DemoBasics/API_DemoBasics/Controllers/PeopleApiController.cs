@@ -1,4 +1,5 @@
 ﻿using API_DemoBasics.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -7,6 +8,7 @@ namespace API_DemoBasics.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(AuthenticationSchemes = "Bearer")]
     public class PeopleApiController : ControllerBase
     {
         private static List<Person> people;
@@ -26,6 +28,7 @@ namespace API_DemoBasics.Controllers
 
         // GET: api/<PeopleApiController>
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult Get()
         {
             return Ok(people);

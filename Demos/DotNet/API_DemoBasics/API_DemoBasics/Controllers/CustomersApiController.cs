@@ -7,11 +7,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using API_DemoBasics.Data;
 using API_DemoBasics.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace API_DemoBasics.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "Power Users", AuthenticationSchemes = "Bearer")]
     public class CustomersApiController : ControllerBase
     {
         private readonly ZenClientsDbContext _context;
