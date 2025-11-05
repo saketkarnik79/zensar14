@@ -1,0 +1,17 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "Client";
+
+package greet;
+
+message TokenRequest{
+	string userName = 1;
+}
+
+message TokenReply {
+	string token = 1;
+}
+
+service AuthService {
+	rpc GetToken(TokenRequest) returns (TokenReply);
+}
