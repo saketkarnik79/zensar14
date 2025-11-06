@@ -30,13 +30,13 @@ namespace API_DemoGRPC
                     };
                     options.Events = new JwtBearerEvents
                     {
-                        OnAuthenticationFailed = ctx =>
+                        OnAuthenticationFailed = (ctx) =>
                         {
                             // log or inspect ctx.Exception.Message
                             Console.WriteLine("Auth failed: " + ctx.Exception?.Message);
                             return Task.CompletedTask;
                         },
-                        OnTokenValidated = ctx =>
+                        OnTokenValidated = (ctx) =>
                         {
                             Console.WriteLine("Token validated for: " + ctx.Principal?.Identity?.Name);
                             return Task.CompletedTask;
