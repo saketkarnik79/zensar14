@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using OrderService.Data;
 using OrderService.Models;
+using OrderService.Messaging;
 
 namespace OrderService.Controllers
 {
@@ -16,11 +17,13 @@ namespace OrderService.Controllers
     {
         private readonly OrderDbContext _context;
         private readonly HttpClient _httpClient;
+        private readonly OrderPublisher _publisher;
 
-        public OrdersApiController(OrderDbContext context, HttpClient client)
+        public OrdersApiController(OrderDbContext context, HttpClient client, OrderPublisher publisher)
         {
             _context = context;
             _httpClient = client;
+            _publisher = publisher;
         }
 
         // GET: api/OrdersApi
@@ -47,7 +50,7 @@ namespace OrderService.Controllers
         [HttpGet("product/{id}")]
         public async Task<ActionResult<Product>> GetProductAsync(int id)
         {
-            var response = await _httpClient.GetAsync($"http://localhost:5259/api/productsapi/{id}");
+            var response = await _httpClient.GetAsync($"http://apigateway:7000/orders/product/{id}");
             response.EnsureSuccessStatusCode();
             var product = await response.Content.ReadFromJsonAsync<Product>();
             return Ok(product);
@@ -91,6 +94,7 @@ namespace OrderService.Controllers
         {
             _context.Orders.Add(order);
             await _context.SaveChangesAsync();
+            await _publisher.PublishOrderAsync(order);
 
             return CreatedAtAction("GetOrder", new { id = order.OrderId }, order);
         }

@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using OrderService.Data;
+using OrderService.Messaging;
+using MassTransit;
 
 namespace OrderService
 {
@@ -10,6 +12,14 @@ namespace OrderService
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+            builder.Services.AddMassTransit(options => 
+            {
+                options.UsingRabbitMq((context, config) => 
+                {
+                    config.Host("rabbitmq://rabbitmq");
+                });
+            });
+            builder.Services.AddScoped<OrderPublisher>();
             builder.Services.AddDbContext<OrderDbContext>(options => options.UseInMemoryDatabase("OrdersDb"));
             builder.Services.AddScoped<HttpClient>();
             builder.Services.AddControllers();
